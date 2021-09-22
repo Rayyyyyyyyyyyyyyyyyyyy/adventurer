@@ -5,18 +5,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var Swordsman_1 = __importDefault(require("./characters/Swordsman"));
 var Warlock_1 = __importDefault(require("./characters/Warlock"));
-var Dagger_1 = __importDefault(require("./weapons/Dagger"));
 var BasicWand_1 = __importDefault(require("./weapons/BasicWand"));
+var BasicSword_1 = __importDefault(require("./weapons/BasicSword"));
+var StabAttack_1 = __importDefault(require("./abilities/StabAttack"));
+var sworTsingStab = new BasicSword_1.default();
+sworTsingStab.switchAttackStrategy(new StabAttack_1.default());
 var swordsman = new Swordsman_1.default("MAXWell");
 var warlock = new Warlock_1.default("Martin");
-console.log("Using MeleeAttack: ");
+console.log("Using BasicSwor - MeleeArrack: ");
 swordsman.attack(warlock);
-swordsman.equip(new Dagger_1.default());
-console.log("Using StabAttack: ");
+console.log("Using Dagger - StabAtack: ");
+swordsman.equip(sworTsingStab);
 swordsman.attack(warlock);
 try {
     swordsman.equip(new BasicWand_1.default());
 }
 catch (err) {
-    console.log(err);
+    // console.log(err);
 }

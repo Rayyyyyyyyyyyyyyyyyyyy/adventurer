@@ -1,32 +1,32 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Character = /** @class */ (function () {
+    // private attackRef: Attack
     function Character(name, role, weaponRef) {
         this.name = name;
         this.role = role;
         this.weaponRef = weaponRef;
-        this.attackRef = this.weaponRef.attackStrategy;
+        // this.attackRef = this.weaponRef.attackStrategy
     }
-    Character.prototype.introduce = function () {
-        console.log("\n        hi i'm " + this.name + " the " + this.role + "\n        ");
-    };
-    Character.prototype.attack = function (target) {
-        this.attackRef.attack(this, target);
-    };
-    Character.prototype.switchAttackStrategy = function (type) {
-        this.attackRef = type;
-    };
+    // public introduce() {
+    //     console.log(`
+    //     hi i'm ${this.name} the ${this.role}
+    //     `);
+    // }
+    // public switchAttackStrategy(type: Attack) {
+    //     this.attackRef = type
+    // }
     Character.prototype.equip = function (weapon) {
         var roles = weapon.availableRoles;
-        if (roles.length == 0 ||
-            roles.indexOf(this.role) != -1) {
-            console.log("\n        " + this.name + " has equipped \"" + weapon.name + "\"!!");
+        if (roles.length == 0 || roles.indexOf(this.role) != -1) {
             this.weaponRef = weapon;
-            this.attackRef = this.weaponRef.attackStrategy;
         }
         else {
-            throw new Error(this.role + " cannot equip " + weapon.name + "!!!");
+            throw new Error("\n            " + this.role + " cannot equip " + weapon.name + "!!");
         }
+    };
+    Character.prototype.attack = function (target) {
+        this.weaponRef.attack(this, target);
     };
     return Character;
 }());
