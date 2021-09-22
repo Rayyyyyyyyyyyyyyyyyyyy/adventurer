@@ -1,18 +1,23 @@
-import Role from "./characters/Role"
-import Character from "./characters/Character"
 import Swordsman from "./characters/Swordsman"
 import Warlock from "./characters/Warlock"
 
-const swordsman = new Character("Maxwell", Role.Swordsman)
-swordsman.introduce()
+import Dagger from "./weapons/Dagger"
+import BasicWand from "./weapons/BasicWand"
 
-const swordsman2 = new Swordsman("MAXWell")
-swordsman2.introduce()
+const swordsman = new Swordsman("MAXWell")
 const warlock = new Warlock("Martin")
-warlock.introduce()
 
+console.log("Using MeleeAttack: ");
+swordsman.attack(warlock)
 
-console.log('Swordsman attacking the warlock  ');
-swordsman2.attack(warlock)
-console.log('Warlock attacking the warlock  ');
-warlock.attack(swordsman)
+swordsman.equip(new Dagger())
+
+console.log("Using StabAttack: ");
+swordsman.attack(warlock)
+
+try {
+    swordsman.equip(new BasicWand())
+} catch (err) {
+    console.log(err);
+
+}

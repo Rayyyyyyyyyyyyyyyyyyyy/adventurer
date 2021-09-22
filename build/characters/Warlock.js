@@ -20,10 +20,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var Role_1 = __importDefault(require("./Role"));
 var Character_1 = __importDefault(require("./Character"));
+var BasicWand_1 = __importDefault(require("../weapons/BasicWand"));
 var Warlock = /** @class */ (function (_super) {
     __extends(Warlock, _super);
     function Warlock(name) {
-        return _super.call(this, name, Role_1.default.Warlock) || this;
+        return _super.call(this, name, Role_1.default.Warlock, new BasicWand_1.default()) || this;
     }
     Warlock.prototype.attack = function (target) {
         console.log("\n        " + this.name + " casts magic and pierced through " + target.name + "!");
