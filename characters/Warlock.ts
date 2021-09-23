@@ -2,10 +2,17 @@ import Role from "./Role"
 import Character from "./Character"
 import MagicAttack from "../abilities/MagicAttack";
 import BasicWand from "../weapons/BasicWand";
+import WarlockEqipmentFactory from "../equipments/WarlockEqipmentFactory";
 
 export default class Warlock extends Character {
     constructor(name: string) {
-        super(name, Role.Warlock, new BasicWand())
+        let WEF = new WarlockEqipmentFactory()
+        super(
+            name,
+            Role.Swordsman,
+            WEF.createWeapon(),
+            WEF.createArmour()
+        )
     }
 
     public attack(target: Character) {

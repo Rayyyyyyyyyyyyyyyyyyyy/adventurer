@@ -5,21 +5,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var Swordsman_1 = __importDefault(require("./characters/Swordsman"));
 var Warlock_1 = __importDefault(require("./characters/Warlock"));
-var BasicWand_1 = __importDefault(require("./weapons/BasicWand"));
-var BasicSword_1 = __importDefault(require("./weapons/BasicSword"));
-var StabAttack_1 = __importDefault(require("./abilities/StabAttack"));
-var sworTsingStab = new BasicSword_1.default();
-sworTsingStab.switchAttackStrategy(new StabAttack_1.default());
+// import Dagger from "./weapons/Dagger"
+// import BasicWand from "./weapons/BasicWand"
+// import BasicSword from "./weapons/BasicSword"
+var Weapons_1 = __importDefault(require("./weapons/Weapons"));
+var WeaponFactory_1 = __importDefault(require("./weapons/WeaponFactory"));
 var swordsman = new Swordsman_1.default("MAXWell");
 var warlock = new Warlock_1.default("Martin");
-console.log("Using BasicSwor - MeleeArrack: ");
+var weaponFactory = new WeaponFactory_1.default();
+console.log("Using BasicSword - MeleeAttack");
 swordsman.attack(warlock);
-console.log("Using Dagger - StabAtack: ");
-swordsman.equip(sworTsingStab);
+var dagger = weaponFactory.createWeapon(Weapons_1.default.Dagger);
+swordsman.equip(dagger);
+console.log("Using Dagger - StabAttack");
 swordsman.attack(warlock);
-try {
-    swordsman.equip(new BasicWand_1.default());
-}
-catch (err) {
-    // console.log(err);
-}

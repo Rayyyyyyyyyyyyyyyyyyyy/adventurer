@@ -2,9 +2,11 @@ import Attack from "../abilities/Attack"
 import MeleeAttack from "../abilities/MeleeAttack"
 import Character from "../characters/Character"
 import Role from "../characters/Role"
+import Equipments from "../equipments/Equipments"
 
 export default abstract class Weapon {
     abstract name: string
+    public type = Equipments.Weapon
 
     abstract availableRoles: Role[]
 

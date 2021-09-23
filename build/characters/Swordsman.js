@@ -20,11 +20,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var Role_1 = __importDefault(require("./Role"));
 var Character_1 = __importDefault(require("./Character"));
-var BasicSword_1 = __importDefault(require("../weapons/BasicSword"));
+var SwordsmanEqipmentFactory_1 = __importDefault(require("../equipments/SwordsmanEqipmentFactory"));
 var Swordsman = /** @class */ (function (_super) {
     __extends(Swordsman, _super);
     function Swordsman(name) {
-        return _super.call(this, name, Role_1.default.Swordsman, new BasicSword_1.default()) || this;
+        var _this = this;
+        var SEF = new SwordsmanEqipmentFactory_1.default();
+        _this = _super.call(this, name, Role_1.default.Swordsman, SEF.createWeapon(), SEF.createArmour()) || this;
+        return _this;
     }
     return Swordsman;
 }(Character_1.default));

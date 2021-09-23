@@ -1,29 +1,31 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+var Weapon_1 = __importDefault(require("../weapons/Weapon"));
+var Armour_1 = __importDefault(require("../armour/Armour"));
 var Character = /** @class */ (function () {
-    // private attackRef: Attack
-    function Character(name, role, weaponRef) {
+    function Character(name, role, weaponRef, armourRef) {
         this.name = name;
         this.role = role;
         this.weaponRef = weaponRef;
-        // this.attackRef = this.weaponRef.attackStrategy
+        this.armourRef = armourRef;
     }
-    // public introduce() {
-    //     console.log(`
-    //     hi i'm ${this.name} the ${this.role}
-    //     `);
-    // }
-    // public switchAttackStrategy(type: Attack) {
-    //     this.attackRef = type
-    // }
-    Character.prototype.equip = function (weapon) {
-        var roles = weapon.availableRoles;
+    Character.prototype.equip = function (equipment) {
+        var roles = equipment.availableRoles;
         if (roles.length == 0 || roles.indexOf(this.role) != -1) {
-            this.weaponRef = weapon;
+            if (equipment instanceof Weapon_1.default) {
+                this.weaponRef = equipment;
+            }
+            else if (equipment instanceof Armour_1.default) {
+                this.armourRef = equipment;
+            }
         }
         else {
-            throw new Error("\n            " + this.role + " cannot equip " + weapon.name + "!!");
+            throw new Error("\n            " + this.role + " cannot equip " + equipment.name + "!!");
         }
+        console.log("\n        " + this.name + " has equipment a " + equipment.type + " - " + equipment.name + "\n        ");
     };
     Character.prototype.attack = function (target) {
         this.weaponRef.attack(this, target);

@@ -1,16 +1,17 @@
 import Role from "./Role"
 import Character from "./Character"
-import MeleeAttack from "../abilities/MeleeAttack"
-import BasicSword from "../weapons/BasicSword"
+import SwordsmanEqipmentFactory from "../equipments/SwordsmanEqipmentFactory"
 
 export default class Swordsman extends Character {
     constructor(
         name: string,
     ) {
+        let SEF = new SwordsmanEqipmentFactory()
         super(
             name,
             Role.Swordsman,
-            new BasicSword()
+            SEF.createWeapon(),
+            SEF.createArmour()
         )
 
     }
